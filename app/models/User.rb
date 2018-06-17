@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :ingredients, through: :allergens
+  has_many :recipes, through: :recipecards
 
   def add_recipe_card(recipe, date, rating)
     RecipeCard.create(user_id: self.id, date: date, rating: rating, recipe_id: recipe.id)

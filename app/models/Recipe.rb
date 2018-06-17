@@ -1,4 +1,6 @@
 class Recipe < ActiveRecord::Base
+  has_many :ingredients, through: :recipeingredients
+  has_and_belongs_to_many :users, through: :recipecards
 
   def self.most_popular
     self.all.max_by { |recipe| recipe.users.count }
